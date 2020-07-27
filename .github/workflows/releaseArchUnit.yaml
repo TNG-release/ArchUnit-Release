@@ -10,14 +10,16 @@ on:
         required: true
 
 env:
-  build_java_version: 11
+  JAVA_HOME = env.JAVA_11_HOME
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Environment
-        run: printenv
+        run: |
+          echo ${{ JAVA_HOME_11_X64 }}
+          echo ${{ github.JAVA_HOME_11_X64 }}
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
@@ -33,6 +35,7 @@ jobs:
 
           ./release/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
         env:
+          JAVA_HOME: ${{ JAVA_HOME_11_X64 }}
           ACTOR: ${{ github.actor }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_SIGNING_PASSWORD}}
