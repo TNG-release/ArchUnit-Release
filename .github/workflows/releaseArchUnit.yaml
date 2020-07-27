@@ -26,7 +26,7 @@ jobs:
           git config user.name $ACTOR
           git config user.email "action@github.com"
 
-          ./scripts/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
+          ./release/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
         env:
           ACTOR: ${{ github.actor }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_SIGNING_KEY }}
