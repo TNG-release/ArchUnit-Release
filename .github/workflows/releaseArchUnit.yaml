@@ -9,9 +9,6 @@ on:
         description: 'You have to provide the new version (e.g. 0.14.0)'
         required: true
 
-env:
-  JAVA_HOME = env.JAVA_11_HOME
-
 jobs:
   build:
     runs-on: ubuntu-latest
