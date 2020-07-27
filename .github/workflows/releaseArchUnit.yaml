@@ -16,13 +16,12 @@ jobs:
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
-          cd ArchUnit
-          git checkout -b release-${{ github.event.inputs.newVersion }}
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       - name: Build & Validate & Release
         run: |
           cd ArchUnit
+          git checkout -b release-${{ github.event.inputs.newVersion }}
 
           git config user.name $ACTOR
           git config user.email "action@github.com"
