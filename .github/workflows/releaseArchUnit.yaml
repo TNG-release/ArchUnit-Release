@@ -13,12 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Environment
-        run: |
-          echo $JAVA_HOME_11_X64
-          export JAVA_HOME=$JAVA_HOME_11_X64
-          echo $JAVA_HOME
-
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
@@ -32,6 +26,7 @@ jobs:
           git config user.name $ACTOR
           git config user.email "action@github.com"
 
+          export JAVA_HOME=$JAVA_HOME_11_X64
           ./release/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
         env:
           ACTOR: ${{ github.actor }}
