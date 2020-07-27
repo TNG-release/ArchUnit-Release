@@ -21,7 +21,7 @@ jobs:
       - name: Build & Validate & Release
         run: |
           cd ArchUnit
-          git checkout -b release-${{ github.event.inputs.newVersion }}
+          git checkout release-${{ github.event.inputs.newVersion }}
 
           git config user.name $ACTOR
           git config user.email "action@github.com"
