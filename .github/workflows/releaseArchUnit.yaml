@@ -15,7 +15,6 @@ jobs:
     steps:
       - name: Environment
         run: |
-          echo ${{ JAVA_HOME_11_X64 }}
           echo ${{ github.JAVA_HOME_11_X64 }}
       - name: Checkout
         run: |
@@ -32,7 +31,7 @@ jobs:
 
           ./release/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
         env:
-          JAVA_HOME: ${{ JAVA_HOME_11_X64 }}
+          JAVA_HOME: ${{ github.JAVA_HOME_11_X64 }}
           ACTOR: ${{ github.actor }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_SIGNING_PASSWORD}}
