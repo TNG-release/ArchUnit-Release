@@ -9,6 +9,9 @@ on:
         description: 'You have to provide the new version (e.g. 0.14.0)'
         required: true
 
+env:
+  build_java_version: 11
+
 jobs:
   build:
     runs-on: ubuntu-latest
