@@ -1,4 +1,4 @@
-name: Release-JGiven
+name: Release-ArchUnit
 on:
   workflow_dispatch:
     inputs:
@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+    ste
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
