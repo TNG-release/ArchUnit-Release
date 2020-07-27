@@ -16,6 +16,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Environment
+        run: printenv
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
