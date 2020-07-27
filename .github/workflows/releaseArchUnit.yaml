@@ -15,11 +15,10 @@ jobs:
     steps:
       - name: Environment
         run: |
-          echo ${{ github.JAVA_HOME_11_X64 }}
           echo $JAVA_HOME_11_X64
+          export JAVA_HOME=$JAVA_HOME_11_X64
           echo $JAVA_HOME
-        env:
-          JAVA_HOME: ${{ github.JAVA_HOME_11_X64 }}
+
       - name: Checkout
         run: |
           git clone https://$API_TOKEN_GITHUB@github.com/NilsOliverLinden/ArchUnit.git
@@ -35,7 +34,6 @@ jobs:
 
           ./release/release.sh ${{ github.event.inputs.oldVersion }} ${{ github.event.inputs.newVersion }}
         env:
-          JAVA_HOME: ${{ github.JAVA_HOME_11_X64 }}
           ACTOR: ${{ github.actor }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_SIGNING_PASSWORD}}
